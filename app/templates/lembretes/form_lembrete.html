@@ -1,0 +1,38 @@
+{% extends 'base.html' %}  <!--herança de template-->
+{% load meus_filtros %}
+
+{% block titulo %}
+Cadastrar lembrete
+{% endblock titulo %}
+
+{% block conteudo %}
+
+    <form method="POST" class="formulario">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Título: </label>
+            {{ form_lembrete.titulo|addclass:'form-control' }}
+            {{ form_lembrete.titulo.errors }}
+        </div>
+        <div class="form-group">
+            <label>Descrição: </label>
+            {{ form_lembrete.descricao|addclass:'form-control' }}
+            {{ form_lembrete.descricao.errors }}
+        </div>
+        <div class="form-group">
+            <label>Data: </label>
+            {{ form_lembrete.data|addclass:'form-control' }}
+            {{ form_lembrete.data.errors }}
+        </div>
+        <div class="form-group">
+            <label>Prioridade: </label>
+            {{ form_lembrete.prioridade|addclass:'form-control' }}
+            {{ form_lembrete.prioridade.errors }}
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary mb-3" value="Salvar">
+            <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary mb-3"> Voltar</a>
+        </div>
+    </form>
+
+{% endblock conteudo %}

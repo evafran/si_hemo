@@ -1,0 +1,31 @@
+{% extends 'base.html' %}  <!--herança de template-->
+
+{% block titulo %}
+Lista de lembretes
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<h1 class="py-3">Lista de Lembretes</h1>
+
+    {% for i in lembretes %}
+
+        <div class="card mb-3">
+            <div class="card-header">
+                Prioridade: {{ i.get_prioridade_display }}
+            </div>
+            <div class="card-body">
+                <h4 class="card-title"> {{ i.titulo }} </h4>
+                <h6 class="card-subtitle"> {{ i.data }} </h6>
+                <p class="card-text"> {{ i.descricao }} </p>
+                <hr>
+                <a href="{% url 'editar_lembrete' i.id %}">Editar</a>
+                <a href="{% url 'excluir_lembrete' i.id %}">Excluir</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+<a href="{% url 'cadastrar_lembrete' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo lembrete"></a>
+
+{% endblock conteudo %}
