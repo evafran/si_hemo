@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.template import loader
 from ..forms import *
-from ..entidades.lembrete import Lembrete
+from ..entidades.funcionario import Funcionario
 from ..services import lembrete_service
 
 
@@ -26,7 +26,7 @@ def cadastrar_lembrete(request):
             data = form_lembrete.cleaned_data['data']
             prioridade = form_lembrete.cleaned_data['prioridade']
             novo_lembrete = Lembrete(titulo=titulo, descricao=descricao, data=data,
-                                     prioridade=prioridade, usuario=request.user)
+                                    prioridade=prioridade, usuario=request.user)
             # envia o objeto com os dados para o lembrete_service, que insere no BD
             lembrete_service.cadastrar_lembrete(novo_lembrete)
             return redirect('listar_lembretes')
@@ -50,7 +50,7 @@ def editar_lembrete(request, id):
         data = form_lembrete.cleaned_data['data']
         prioridade = form_lembrete.cleaned_data['prioridade']
         novo_lembrete = Lembrete(titulo=titulo, descricao=descricao, data=data,
-                                 prioridade=prioridade, usuario=request.user)
+                                prioridade=prioridade, usuario=request.user)
         lembrete_service.editar_lembrete(lembrete_bd, novo_lembrete)
         return redirect('listar_lembretes')
 

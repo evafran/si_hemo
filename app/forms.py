@@ -18,7 +18,7 @@ class HospitalForm(forms.ModelForm):
 class FuncionarioForm(forms.ModelForm):
     class Meta:
         model = Funcionario
-        exclude = ('USUARIO', )
+        exclude = ('usuario', )
         # todos os campos do models serão validados, exceto o que foi passado no exclude
         fields = '__all__'
 

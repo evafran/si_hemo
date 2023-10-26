@@ -11,6 +11,33 @@ Cadastro de usuários
     {% csrf_token %}
 
     <div class="form-group">
+        {{ form_funcionario.nome.errors }}
+        <label> Nome: </label>
+        {{form_funcionario.nome|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_funcionario.cpf.errors }}
+        <label> Cpf: </label>
+        {{ form_funcionario.cpf|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_funcionario.endereco.errors }}
+        <label> Endereco: </label>
+        {{ form_funcionario.endereco|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_funcionario.telefone.errors}}
+        <label> Telefone: </label>
+        {{ form_funcionario.telefone|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_funcionario.prioridade.errors }}
+        <label> É Administrador?: </label>
+        {{ form_funcionario.prioridade|addclass:'form-control' }}
+    </div>
+
+
+    <div class="form-group">
         {{ form_usuario.username.errors }}
         <label>Username: </label>
         {{ form_usuario.username|addclass:'form-control' }}

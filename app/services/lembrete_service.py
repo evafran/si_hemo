@@ -3,8 +3,8 @@ from ..models import *
 
 
 #def cadastrar_lembrete(lembrete):
-""" Lembrete.objects.create(titulo=lembrete.titulo, descricao=lembrete.descricao, data=lembrete.data,
-                            prioridade=lembrete.prioridade, usuario=lembrete.usuario)
+    #Lembrete.objects.create(titulo=lembrete.titulo, descricao=lembrete.descricao, data=lembrete.data,
+                            #prioridade=lembrete.prioridade, usuario=lembrete.usuario)
 
 
 def listar_lembretes(usuario):
@@ -16,7 +16,7 @@ def listar_lembrete_id(id):
     return Lembrete.objects.get(id=id)
 
 
-# recebe o lembrete já inserido no bd e o novo
+"""# recebe o lembrete já inserido no bd e o novo
 def editar_lembrete(lembrete_bd, novo_lembrete):
     lembrete_bd.titulo = novo_lembrete.titulo
     lembrete_bd.descricao = novo_lembrete.descricao
