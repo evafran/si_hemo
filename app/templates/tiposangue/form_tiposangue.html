@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+Cadastro de tipo sanguíneo 
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<form method="POST" class="formulario">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form_tiposangue.tipo.errors }}
+        <label> tipo: </label>
+        {{form_tiposangue.tipo|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_tiposangue.quantidade.errors }}
+        <label> Quantidade: </label>
+        {{ form_tiposangue.quantidade|addclass:'form-control' }}
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary mb-3" value="Salvar tipo de sangue ">
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
+    </div>
+</form>
+
+{% endblock conteudo %}

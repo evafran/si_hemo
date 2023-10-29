@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+Cadastro de usuários
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<form method="POST" class="formulario">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form_dispersao.cod_func.errors }}
+        <label> Funcionário: </label>
+        {{form_dispersao.cod_func|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_dispersao.cod_hospital.errors }}
+        <label> Hospitaal: </label>
+        {{ form_dispersao.cod_hospital|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_dispersao.cod_tiposang.errors }}
+        <label> Tipo de sangue: </label>
+        {{ form_dispersao.cod_tiposang|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_dispersao.qtd_bolsa.errors}}
+        <label> Quantidade: </label>
+        {{ form_dispersao.qtd_bolsa|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_dispersao.data.errors }}
+        <label> Data de solicitação: </label>
+        {{ form_dispersao.data|addclass:'form-control' }}
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary mb-3" value="Salvar solicitação ">
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
+    </div>
+</form>
+
+{% endblock conteudo %}

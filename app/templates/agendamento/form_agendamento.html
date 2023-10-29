@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+Agendar Doaçaõ
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<form method="POST" class="formulario">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form_agendamento.cod_doador.errors }}
+        <label> Doador: </label>
+        {{form_agendamento.cod_doador|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_agendamento.data_hora.errors }}
+        <label> Data e hora : </label>
+        {{ form_agendamento.data_hora|addclass:'form-control' }}
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary mb-3" value="Salvar Agendamento ">
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
+    </div>
+</form>
+
+{% endblock conteudo %}

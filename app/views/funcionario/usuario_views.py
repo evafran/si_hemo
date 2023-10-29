@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from ..forms import FuncionarioForm
+from ...forms import FuncionarioForm
 
 
 def cadastrar_usuario(request):
@@ -21,7 +21,7 @@ def cadastrar_usuario(request):
             funcionario.save()
 
 
-            return redirect('listar_lembretes')
+            return redirect('listar_agendamentos')
     else:
         form_usuario = UserCreationForm()
         form_funcionario = FuncionarioForm()
@@ -36,7 +36,7 @@ def logar_usuario(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('listar_lembretes')
+            return redirect('listar_agendamentos')
         else:
             messages.error(request, 'Credenciais de usuário inválidas')
             return redirect('logar_usuario')

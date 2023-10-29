@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+Cadastro de usuários
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<form method="POST" class="formulario">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form_doador.nome.errors }}
+        <label> Nome: </label>
+        {{form_doador.nome|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_doador.endereco.errors }}
+        <label> Endereco: </label>
+        {{ form_doador.endereco|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_doador.cpf.errors }}
+        <label> Cpf: </label>
+        {{ form_doador.cpf|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_doador.telefone.errors}}
+        <label> Telefone: </label>
+        {{ form_doador.telefone|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_doador.data_nascimento.errors }}
+        <label> Data de Nascimento: </label>
+        {{ form_doador.data_nascimento|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_doador.peso.errors }}
+        <label> Peso: </label>
+        {{ form_doador.peso|addclass:'form-control'}}
+    </div>
+    <div class="form-group">
+        {{ form_doador.cod_tiposang.errors}}
+        <label> Tipo Sanguíneo: </label>
+        {{ form_doador.cod_tiposang|addclass:'form-control'}}
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary mb-3" value="Salvar doador">
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
+    </div>
+</form>
+
+{% endblock conteudo %}

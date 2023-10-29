@@ -15,11 +15,11 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ebe8e8;">
-    <a class="navbar-brand" href="{% url 'listar_lembretes' %}">
+    {% comment %}<a class="navbar-brand" href="{% url 'listar_lembretes' %}">{% endcomment %}
         <div class="col-8 m-auto pt-2 pb-2 text-center" style="display: flex; align-items: center;">
             <img src="{% static 'imagens/doador.png' %}"  alt="logo" class="img-fluid" width="170" style="margin-left: 25px;">
             <h1 style="color: black;">Hemocentro Diamantina<h1>
-            <img src="{% static 'imagens/doador1.jpg' %}"  alt="logo1" class="img-fluid" width="225" style="margin-right: 25px;">
+            <img src="{% static 'imagens/doador1.jpg' %}"  alt="logo1" class="img-fluid" width="150" style="margin-right: 25px;">
 
         </div>
         </a>
@@ -31,7 +31,7 @@
         <div class="navbar-nav">
             {% if request.user.is_authenticated %}
                 <!--se o usuario estiver deslogado, nao aparece os botões abaixo-->
-                <a class="nav-item nav-link active" href="{% url 'listar_lembretes' %}">Listar Lembretes</a>
+                {% comment %}<a class="nav-item nav-link active" href="{% url 'listar_lembretes' %}">Listar Lembretes</a>{% endcomment %}
                 <a class="nav-item nav-link active" href="{% url 'deslogar_usuario' %}">Logout</a>
             {% endif %}
             <a class="nav-item nav-link active" href="{% url 'cadastrar_usuario' %}" style="color: black;">Cadastrar Usuário</a>

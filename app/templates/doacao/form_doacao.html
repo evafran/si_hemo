@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load meus_filtros %}
+
+{% block titulo %}
+Cadastro de tipo sanguíneo 
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<form method="POST" class="formulario">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form_doacao.cod_agen.errors }}
+        <label> Doação Agendada: </label>
+        {{form_doacao.cod_agen|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{ form_doacao.cod_func.errors }}
+        <label> Funcionário: </label>
+        {{ form_doacao.cod_func|addclass:'form-control' }}
+    </div>
+    <div class="form-group">
+        {{form_doacao.data_hora.errors }}
+        <label> Data da Agendação </label> 
+        {{ form_doacao.data_hora|addclass:'form-control' }}
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary mb-3" value="Salvar ">
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
+    </div>
+</form>
+
+{% endblock conteudo %}
