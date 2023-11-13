@@ -6,10 +6,26 @@ Lista de doadores
 
 {% block conteudo %}
 
+<style>
+    
+    #listar_doador_h1{
+        border-bottom: 1.5px solid #817e7e; 
+        margin-bottom:15px;
+    }
+    #topo{
+        max-width: 900px; 
+        padding: 0; 
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    
+    #listar_doador_a{
+        margin-bottom:5px;
+    }
 
-<div class="container" id="topo" style=" max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
-    <h1 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px;">Lista de Doadores </h1>
-    <a href="{% url 'cadastrar_doador' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Doador" style="margin-bottom:5px"></a>
+</style>
+<div class="container" id="topo">
+    <h1 class="py-3" id="listar_doador_h1">Lista de Doadores </h1>
+    <a href="{% url 'cadastrar_doador' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Doador"></a>
 </div>
 
 
@@ -22,9 +38,13 @@ Lista de doadores
                                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="card-body">
         <h4 class="card-title"> Tipo : {{ i.nome }} </h4>
 =======
+=======
+    
+>>>>>>> 6b37992 (Modificações gerais no front end)
     <div class="card-body" style="padding: 20px;">
         <h3 class="card-title"> Nome: {{ i.nome }} </h3>
 >>>>>>> 139f392 (Modificações gerais no front end)
