@@ -6,28 +6,13 @@ Lista de lembretes
 {% endblock titulo %}
 
 {% block conteudo %}
-<<<<<<< HEAD
 
-<div class="col-8 m-auto pt-2 pb-2 text-center" style="display: flex; align-items: center;">
-    <img src="{% static 'imagens/gif_doacoes.gif' %}"  alt="logo" class="img-fluid" width="170" style="margin-right: 25px;">
-    <h1 style="color: black;">Página Principal<h1>
-
-</div>
-<a href="{% url 'listar_doador' %}"><input type="button" class="btn btn-primary mb-3" value="Visualizar Doadores"></a>
-<a href="{% url 'listar_tiposangue' %}"><input type="button" class="btn btn-primary mb-3" value="Listar Tipo de Sangue"></a>
-<a href="{% url 'listar_hospital' %}"><input type="button" class="btn btn-primary mb-3" value="Listar Hospital"></a>
-<a href="{% url 'listar_dispersao' %}"><input type="button" class="btn btn-primary mb-3" value="Solicitação de Dispersão"></a>
-<a href="{% url 'listar_doacao' %}"><input type="button" class="btn btn-primary mb-3" value="listar Doação "></a>
-<a href="{% url 'cadastrar_agendamento' %}"><input type="button" class="btn btn-primary mb-3" value="Agendamento"></a>
-
-
-=======
     <div class="d-flex justify-content-end">
         <a href="{% url 'home' %}" class="ml-auto">
             <button type="button" class="btn-primary mb-3">Voltar a Home </button>
         </a>
     </div>
->>>>>>> 139f392 (Modificações gerais no front end)
+
 {% for i in agendamentos %}
 
     <div class="card mb-3"> 
