@@ -1,0 +1,28 @@
+{% extends 'base.html' %}  <!--herança de template-->
+
+{% block titulo %}
+Lista de Tipo de Sangue
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<h1 class="py-3">Lista de Tipo de Sangue</h1>
+
+    {% for i in tiposangue %}
+
+        <div class="card mb-3">
+            
+            <div class="card-body">
+                <h4 class="card-title"> Tipo:{{ i.tipo }} </h4>
+                <h4 class="card-title"> Quantidade:{{ i.quantidade }} </h4>
+                <hr>
+                <a href="{% url 'editar_tiposangue' i.id %}">Editar</a>
+                <a href="{% url 'excluir_tiposangue' i.id%}">Excluir</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+<a href="{% url 'cadastrar_tiposangue' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Tipo Sangue"></a>
+
+{% endblock conteudo %}

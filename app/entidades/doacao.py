@@ -3,6 +3,7 @@ class Doacao:
     def __init__(self, cod_agen,cod_func,data_hora):
         self.__cod_agen = cod_agen
         self.__cod_func= cod_func
+        self.__data_hora = data_hora
 
     # getters e setters
     @property

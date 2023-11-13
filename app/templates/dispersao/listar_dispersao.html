@@ -1,0 +1,31 @@
+{% extends 'base.html' %}  <!--herança de template-->
+
+{% block titulo %}
+Lista de Dispersão
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<h1 class="py-3">Lista de Dispersão</h1>
+
+    {% for i in dispersao %}
+
+        <div class="card mb-3">
+            
+            <div class="card-body">
+                <h4 class="card-title"> Nome Funcionário:{{ i.cod_func }} </h4>
+                <h4 class="card-title"> Nome Hospital:{{ i.cod_hospital}} </h4>
+                <h4 class="card-title"> Tipo Sangue:{{ i.cod_tiposang }} </h4>
+                <h4 class="card-title"> Quntidade de Bolsa:{{ i.qtd_bolsa }} </h4>
+                <h4 class="card-title"> Data da dispersão:{{ i.data }} </h4>
+                <hr>
+                <a href="{% url 'editar_dispersao' i.id %}">Editar</a>
+                <a href="{% url 'excluir_dispersao' i.id%}">Excluir</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+<a href="{% url 'solicitar_dispersao' %}"><input type="button" class="btn btn-primary mb-3" value=" Solicitação de Dispersão "></a>
+
+{% endblock conteudo %}

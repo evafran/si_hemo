@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Confirmar exclusão
+{% endblock titulo %}
+
+
+{% block conteudo %}
+
+<div class="py-3">
+  <div class="card mb-3">
+    <div class="card-header">
+      <h3>Tem certeza que deseja excluir o hospital abaixo?</h3>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> {{ hospital.cnpj }} </h5>
+      <p class="card-text"> {{ hospital.nome }} </p>
+      <p class="card-text"> {{ hospital.endereco}} </p>
+      <p class="card-text"> {{ hospital.telefone }} </p>
+      <p class="card-text"> {{ hospital.email }} </p>
+      <hr>
+      <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Excluir</button>
+        <!-- o META.HTTP.REFERER pega a ultima rota que o usuário estava -->
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Voltar</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock conteudo %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}  <!--herança de template-->
+
+{% block titulo %}
+Lista de DoaÇÕES
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<h1 class="py-3">Lista de Doações</h1>
+
+    {% for i in doacao %}
+
+        <div class="card mb-3">
+            
+            <div class="card-body">
+                <h4 class="card-title"> Agendamento:{{ i.cod_agen }} </h4>
+                <h4 class="card-title"> Nome Funcionário:{{ i.cod_func }} </h4>
+                <h6 class="card-subtitle"> Data da Doação: {{ i.data_hora}} </h6>
+                
+                <hr>
+                <a href="{% url 'editar_doacao' i.id %}">Editar</a>
+                <a href="{% url 'excluir_doacao' i.id%}">Excluir</a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+<a href="{% url 'inserir_doacao' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar nova Doação"></a>
+
+{% endblock conteudo %}
