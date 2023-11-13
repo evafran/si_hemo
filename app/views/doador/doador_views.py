@@ -4,6 +4,8 @@ from ...entidades.doador import Doador
 from ...services import doador_service
 from django.contrib.auth.decorators import login_required
 
+
+
 @login_required()
 
 def cadastrar_doador(request):

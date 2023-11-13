@@ -19,7 +19,7 @@ Confirmar exclusão
         {% csrf_token %}
         <button class="btn btn-danger" type="submit">Excluir</button>
         <!-- o META.HTTP.REFERER pega a ultima rota que o usuário estava -->
-        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Voltar</a>
+        <a href="{{ request.META.HTTP_REFERER }}"><button type="button" class="btn btn-primary custom-btn">Voltar</button></a>
       </form>
     </div>
   </div>

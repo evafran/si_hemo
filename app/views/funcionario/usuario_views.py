@@ -36,7 +36,7 @@ def logar_usuario(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('listar_agendamentos')
+            return redirect('home')
         else:
             messages.error(request, 'Credenciais de usuário inválidas')
             return redirect('logar_usuario')
@@ -48,3 +48,5 @@ def logar_usuario(request):
 def deslogar_usuario(request):
     logout(request)
     return redirect('logar_usuario')
+
+

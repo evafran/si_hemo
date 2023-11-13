@@ -7,55 +7,75 @@ Cadastro de usuários
 
 {% block conteudo %}
 
-<form method="POST" class="formulario">
-    {% csrf_token %}
-
-    <div class="form-group">
-        {{ form_funcionario.nome.errors }}
-        <label> Nome: </label>
-        {{form_funcionario.nome|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_funcionario.cpf.errors }}
-        <label> Cpf: </label>
-        {{ form_funcionario.cpf|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_funcionario.endereco.errors }}
-        <label> Endereco: </label>
-        {{ form_funcionario.endereco|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_funcionario.telefone.errors}}
-        <label> Telefone: </label>
-        {{ form_funcionario.telefone|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_funcionario.prioridade.errors }}
-        <label> É Administrador?: </label>
-        {{ form_funcionario.prioridade|addclass:'form-control' }}
-    </div>
+<div class="container "><h1 class="justify-content-center">Cadastro</h1></div>
 
 
-    <div class="form-group">
-        {{ form_usuario.username.errors }}
-        <label>Username: </label>
-        {{ form_usuario.username|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_usuario.password1.errors }}
-        <label>Senha: </label>
-        {{ form_usuario.password1|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_usuario.password2.errors }}
-        <label>Confirmar senha: </label>
-        {{ form_usuario.password2|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Cadastrar" class="btn btn-primary">
-        <a href="{% url 'logar_usuario' %}" class="btn btn-primary">Fazer login</a>
-    </div>
-</form>
+<div class="container" style=" max-width: 500px; font-family:Arial, Helvetica, sans-serif; 
+                              margin-top: 80px; border: 1px solid #414141; 
+                              padding: 10px; border-radius: 8px;
+                              box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
+  
+  <style>
+    .form-group {
+        padding: 5px;
+    
+    }
+  </style>
 
+    <form method="POST" class="formulario">
+        
+        {% csrf_token %}
+        <div class="d-flex justify-content-end">
+            <a href="{% url 'logar_usuario' %}" class="ml-auto">
+                <button type="button" class="btn btn-primary custom-btn">Voltar a tela de Login</button>
+            </a>
+        </div>
+        
+        <div class="form-group">
+            {{ form_funcionario.nome.errors }}
+            <label> Nome: </label>
+            {{form_funcionario.nome|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_funcionario.cpf.errors }}
+            <label> Cpf: </label>
+            {{ form_funcionario.cpf|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_funcionario.endereco.errors }}
+            <label> Endereco: </label>
+            {{ form_funcionario.endereco|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_funcionario.telefone.errors}}
+            <label> Telefone: </label>
+            {{ form_funcionario.telefone|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_funcionario.prioridade.errors }}
+            <label> É Administrador?: </label>
+            {{ form_funcionario.prioridade|addclass:'form-control' }}
+        </div>
+
+        <div class="form-group">
+            {{ form_usuario.username.errors }}
+            <label>Username: </label>
+            {{ form_usuario.username|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_usuario.password1.errors }}
+            <label>Senha: </label>
+            {{ form_usuario.password1|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_usuario.password2.errors }}
+            <label>Confirmar senha: </label>
+            {{ form_usuario.password2|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Cadastrar" class="btn btn-primary">
+            <a href="{% url 'logar_usuario' %}" class="btn btn-primary">Fazer login</a>
+        </div>
+    </form>
+</div>
 {% endblock conteudo %}

@@ -19,8 +19,8 @@ Lista de lembretes
                 <h6 class="card-subtitle"> {{ i.data }} </h6>
                 <p class="card-text"> {{ i.descricao }} </p>
                 <hr>
-                <a href="{% url 'editar_lembrete' i.id %}">Editar</a>
-                <a href="{% url 'excluir_lembrete' i.id %}">Excluir</a>
+                <a href="{% url 'editar_lembrete' i.id %}"><button type="button" class="btn btn-primary custom-btn">Editar</button></a>
+                <a href="{% url 'excluir_lembrete' i.id %}"><button type="button" class="btn btn-primary custom-btn">Excluir</button></a>
             </div>
         </div>
 

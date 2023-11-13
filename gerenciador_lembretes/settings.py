@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'gerenciador_lembretes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'doacao_sangue',
+        'NAME': 'doacoes_sangue',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '3570',
         'HOST': 'localhost',
         'PORT': '3306',
     }

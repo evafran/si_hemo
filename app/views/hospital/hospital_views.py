@@ -3,6 +3,7 @@ from ...forms import HospitalForm
 from ...entidades.hospital import Hospital
 from ...services import hospital_service
 from django.contrib.auth.decorators import login_required
+  
 
 @login_required()
 
@@ -26,6 +27,7 @@ def cadastrar_hospital(request):
         form_hospital = HospitalForm()
     return render(request, 'hospital/form_hospital.html', {'form_hospital': form_hospital})
 
+<<<<<<< HEAD
 
 
 # com login_required exibe o método apenas se o usuário estiver logado, se não, redireciona para página de login
@@ -61,3 +63,5 @@ def excluir_hospital(request, id):
         hospital_service.excluir_hospital(hospital_bd)
         return redirect('listar_hospital')
     return render(request, 'hospital/confirmar_exclusao_hospital.html', {'hospital': hospital_bd})
+=======
+>>>>>>> 139f392 (Modificações gerais no front end)

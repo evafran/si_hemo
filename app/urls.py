@@ -7,10 +7,13 @@ from .views.tiposangue.tiposangue_views import *
 from.views.hospital.hospital_views import *
 from.views.dispersao.dispersao_views import *
 from.views.doacao.doacao_views import *
+from.views.home.home_views import *
+
 
 
 urlpatterns = [
-    path('',listar_agendamentos,name='listar_agendamentos'),
+    path('',home, name='home'),
+    path('listar_agendamentos',listar_agendamentos,name='listar_agendamentos'),
     path('listar_doador',listar_doador,name='listar_doador'),
     path('listar_hospital',listar_hospital,name='listar_hospital'),
     path('listar_tiposangue',listar_tiposangue,name='listar_tiposangue'),
