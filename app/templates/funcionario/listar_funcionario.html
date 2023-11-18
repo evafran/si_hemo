@@ -1,0 +1,31 @@
+{% extends 'base.html' %}  <!--herança de template-->
+
+{% block titulo %}
+Lista de funcionario
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<h1 class="py-3">Lista de Funcionários </h1>
+<a href="{% url 'cadastrar_funcionario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Funcionário"></a>
+
+
+{% for i in funcionario %}
+
+<div class="card mb-3">
+    
+    <div class="card-body">
+        <h4 class="card-title"> Nome : {{ i.nome }} </h4>
+        <p class="card-text"> CPF:: {{ i.cpf }} </p>
+        <h6 class="card-subtitle"> Endereço: {{ i.endereco }} </h6>
+        <p class="card-text"> Telefone: {{ i.telefone }} </p>
+        <p class="card-text"> Usuario: {{ i.usuario }} </p>
+        <hr>
+        <a href="{% url 'editar_funcionario' i.id %}">Editar</a>
+        <a href="{% url 'excluir_funcionario' i.id %}">Excluir</a>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock conteudo %}

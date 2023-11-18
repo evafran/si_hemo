@@ -1,41 +1,47 @@
-{% extends 'base.html' %}  <!--herança de template-->
-{%  load static %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block titulo %}
-Lista de lembretes
+    Home 
 {% endblock titulo %}
 
 {% block conteudo %}
 
-<div class="col-8 m-auto pt-2 pb-2 text-center" style="display: flex; align-items: center;">
-    <img src="{% static 'imagens/gif_doacoes.gif' %}"  alt="logo" class="img-fluid" width="170" style="margin-right: 25px;">
-    <h1 style="color: black;">Página Principal<h1>
-
-</div>
-<a href="{% url 'listar_doador' %}"><input type="button" class="btn btn-primary mb-3" value="Visualizar Doadores"></a>
-<a href="{% url 'listar_tiposangue' %}"><input type="button" class="btn btn-primary mb-3" value="Listar Tipo de Sangue"></a>
-<a href="{% url 'listar_hospital' %}"><input type="button" class="btn btn-primary mb-3" value="Listar Hospital"></a>
-<a href="{% url 'listar_dispersao' %}"><input type="button" class="btn btn-primary mb-3" value="Solicitação de Dispersão"></a>
-<a href="{% url 'listar_doacao' %}"><input type="button" class="btn btn-primary mb-3" value="listar Doação "></a>
-<a href="{% url 'cadastrar_agendamento' %}"><input type="button" class="btn btn-primary mb-3" value="Agendamento"></a>
-
-
-{% for i in agendamentos %}
-
-    <div class="card mb-3">
-        
-        
-        <div class="card-body">
-            <h4 class="card-title"> Doador: {{ i.cod_doador }} </h4>
-            <h6 class="card-subtitle"> Data e Hora: {{ i.data_hora }} </h6>
-            <hr>
-            <a href="{% url 'editar_agendamento' i.id %}">Editar</a>
-            <a href="{% url 'excluir_agendamento' i.id %}">Excluir</a>
-        </div>
+<div class="container d-flex align-items-center bg-light" style="margin-top:50px; padding: 50px;" >
+    <div class="justify-content-start " style="max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif;" >
+        <style>
+            .custom-btn {
+                width: 100%;
+                height: 150px;
+                border: 2px solid rgb(153, 153, 153);
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                
+            }
+        </style>
+        <h1 style="color: black;">Agendamentos</h1>
+        {% for i in agendamentos %}
+            <div class="card mb-3">
+                
+                
+                <div class="card-body">
+                    <h4 class="card-title"> Doador: {{ i.cod_doador }} </h4>
+                    <h6 class="card-subtitle"> Data e Hora: {{ i.data_hora }} </h6>
+                    <hr>
+                    <a href="{% url 'editar_agendamento' i.id %}">Editar</a>
+                    <a href="{% url 'excluir_agendamento' i.id %}">Excluir</a>
+                </div>
+            </div>
+    
+        {% endfor %}
+        <a href="{% url 'cadastrar_agendamento' %}" class="btn btn-primary">Novo Agendamento</a>
     </div>
-
-{% endfor %}
-
-
+    
+    <div class="justify-content-begin" style="padding: 0; margin-left: 50px;">
+        <img src="{% static 'imagens/gif_doacoes.gif' %}" alt="Logo" width="auto" height="auto">
+    </div>
+</div>
+    
+    
+    
 
 {% endblock conteudo %}

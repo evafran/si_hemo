@@ -8,40 +8,203 @@
         {% block titulo %}
         {% endblock titulo %}
     </title>
-    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'imagens/favicon-16x16.png' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">-->
+    <!--<link rel="stylesheet" href="{% static 'app/css/style.css' %}">-->
 </head>
 
+<!--Fonte Utilizada font-family:Arial, Helvetica, sans-serif-->
+
 <body>
+  <div class="navigatin_superior " style="background-color:  #3C3C3B; padding: 5px;">
+    <style>
+      .button_cadastrar_usuario {
+        padding: 5px;
+        text-decoration: none;
+        color: white;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        border-left: 1px solid #ffffff;
+        border-right: 1px solid #ffffff;
+      }
+      .button_cadastrar_usuario_logout {
+        padding: 5px;
+        text-decoration: none;
+        color: rgb(255, 0, 0);
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        border-left: 1px solid #ffffff;
+        border-right: 1px solid #ffffff;
+      }
+      #nomedousuario{
+        padding: 5px;
+        color: white;
+        font-family:Arial, Helvetica, sans-serif;
+        border-left: 1px solid #ffffff;
+        
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ebe8e8;">
-    {% comment %}<a class="navbar-brand" href="{% url 'listar_lembretes' %}">{% endcomment %}
-        <div class="col-8 m-auto pt-2 pb-2 text-center" style="display: flex; align-items: center;">
-            <img src="{% static 'imagens/gif_coracao.gif' %}"  alt="logo" class="img-fluid" width="170" style="margin-left: 25px;">
-            <h1 style="color: black;"><a class="nav-item nav-link active" href="{% url 'listar_agendamentos' %}" style="color: black;">Hemocentro Diamantina</a><h1>
-
-        </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      }
+    </style>
+    <div class="container d-flex justify-content-between align-items-center" >
+      <div class="d-flex align-items-center" style="padding: 2px;">
+          <img src="{% static 'imagens/logomarca_gov.png' %}" alt="Logo">
+      </div>
+      {% if request.resolver_match.url_name != 'cadastrar_usuario' %}
+        <div class="d-flex align-items-center justify-content-end" style="padding: 2px;">
+            <!-- Se o usuário estiver logado, não aparece o botão de cadastrar o usuário na barra de navegação -->
             {% if request.user.is_authenticated %}
-                <!--se o usuario estiver deslogado, nao aparece os botões abaixo-->
-                {% comment %}<a class="nav-item nav-link active" href="{% url 'listar_lembretes' %}">Listar Lembretes</a>{% endcomment %}
-                <a class="nav-item nav-link active" href="{% url 'deslogar_usuario' %}">Logout</a>
+                {% comment %}
+                <a class="nav-link" href="{% url 'listar_lembretes' %}">Listar Lembretes</a>
+                {% endcomment %}
+                
+                <p class="ml-2 mb-0" id="nomedousuario"> {{ request.user.username }}</p>
+                <a class="button_cadastrar_usuario_logout" href="{% url 'deslogar_usuario' %}">Logout</a>
+                
+            {% else %}
+                <a class="button_cadastrar_funcionario" href="{% url 'logar_usuario' %}">Login</a>
+                <!--<a href="{% url 'logar_usuario' %}" id="loginLink">Login</a>-->
+ 
             {% endif %}
-            <a class="nav-item nav-link active" href="{% url 'cadastrar_usuario' %}" style="color: black;">Cadastrar Usuário</a>
         </div>
+      {%endif%}
     </div>
-</nav>
+  </div>
+    
 
+    <style>
+      .main_header{
+        background-color: rgb(136, 68, 68);
+        padding: 10px;
+      }
+        
+      
+    </style>
+
+
+    <header class="main_header ">
+      <style>
+        h1{
+          font-size: 3.5em; 
+          color: black; 
+          font-weight: bold;
+          font-family:Arial, Helvetica, sans-serif;
+        }
+        #header_name_logo_principal_div{
+          align-items: center; 
+          margin-bottom: 10px;
+        }
+        #header_name_logo_principal{
+          align-items: center; 
+          border-bottom: 1px solid #ffffff;
+        }
+        #id_name_principal{
+          text-decoration: none; 
+          margin-left: 20px;
+        }
+        #id_name_principal_div{
+          text-align: end;
+        }
+      </style>
+      {% comment %}<a class="navbar-brand" href="{% url 'listar_lembretes' %}">{% endcomment %}
+      <div class="container" id="header_name_logo_principal_div">
+
+        <div class="d-flex justify-content-start" id="header_name_logo_principal">
+          <img src="{% static 'imagens/gif_coracao.gif' %}" alt="Logo gif " width="110rem" height="104rem">
+
+          <div class="justify-content-start" id="id_name_principal_div">
+            <a href="{% url 'listar_agendamentos' %}" id="id_name_principal"><h1>Hemocentro Diamantina</h1> </a>
+          </div>
+
+        </div>
+
+      </div>
+      {% if request.user.is_authenticated %}
+        <p></p>
+
+          <div class="container" id="navbar mostradores" style="font-size: 12px; font-family:Arial, Helvetica, sans-serif;">
+            <ul class="nav">
+              <style>
+                  .nav-link {
+                    color: black;
+                    font-weight: bold;
+                    
+                  }
+                  
+                  .nav-link span{
+                    transition: color 0.3s, box-shadow 0.3s;
+
+                  }
+                  
+                  .nav-link:hover span{
+                    color:white;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  }
+              </style>
+
+              
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{% url 'listar_doador' %}"><span>Lista de Doadores</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{% url 'cadastrar_tiposangue' %}"><span>Inserir Tipo Sanguineo</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{% url 'cadastrar_hospital' %}"><span>Cadastrar Hospital</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{% url 'solicitar_dispersao' %}"><span>Solicitar Dispersão</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{% url 'inserir_doacao' %}"><span>Nova Doação</span></a>
+              </li>
+              {% for f in funcionario %}
+                {% if f.nome == request.user.first_name %}
+                  {% if f.prioridade == 'S' %}
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="{% url 'listar_funcionario' %}"><span>Listar  Funcionário</span></a>
+                    </li>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        
+      {%endif%}
+    </header>
+    
 <main class="container">
+  
     {% block conteudo %}
-    {% endblock conteudo %}
-</main>
+  <!--Verificar para inclusão da tela de descanso-->
+        {% block teladescanso %}
+        {% endblock teladescanso %}
 
+
+    {% endblock conteudo %}
+
+</main>
+    <!--Importação padrão do bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!--importando popper-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <!--Importação Recuros para o botão do Menu Barra de navegação-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Script para fazer o botão funcionar -->
+    <script>
+      // Função para rolar suavemente para o início da página
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+    </script>
 </body>
 
 </html>

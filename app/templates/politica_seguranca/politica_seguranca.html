@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load meus_filtros %}
+
+{% block titulo %}
+    Home 
+{% endblock titulo %}
+
+{% block teladescanso %}
+
+    <h5>Política de Segurança:</h5>
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Voltar</a>
+{% endblock teladescanso %}
+
