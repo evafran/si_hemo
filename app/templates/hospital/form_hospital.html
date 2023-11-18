@@ -6,41 +6,61 @@ Cadastro de hospitais
 {% endblock titulo %}
 
 {% block conteudo %}
+<div class="container" id="topo" style=" max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
+    <h3 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px; font-weight: bold;">Cadastrar Hospital </h3>
+</div>
 
-<form method="POST" class="formulario">
-    {% csrf_token %}
+<div class="container" style=" max-width: 900px; font-family:Arial, Helvetica, sans-serif; 
+                                margin-top: 50px; border: 2px solid #414141; 
+                                padding: 10px; border-radius: 8px;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
 
-    <div class="form-group">
-        {{ form_hospital.cnpj.errors }}
-        <label> CNPJ: </label>
-        {{form_hospital.cnpj|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_hospital.nome.errors }}
-        <label> Nome: </label>
-        {{ form_hospital.nome|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_hospital.endereco.errors }}
-        <label> Endereço: </label>
-        {{ form_hospital.endereco|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_hospital.telefone.errors}}
-        <label> Telefone: </label>
-        {{ form_hospital.telefone|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_hospital.email.errors }}
-        <label> email: </label>
-        {{ form_hospital.email|addclass:'form-control' }}
-    </div>
+    <style>
+        .form-group {
+            padding: 5px;
+        
+        }
+        .buttonVoltar{
+            margin-left: 10px;
+        }
+    </style>
+
+    <form method="POST" class="formulario">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form_hospital.cnpj.errors }}
+            <label> CNPJ: </label>
+            {{form_hospital.cnpj|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_hospital.nome.errors }}
+            <label> Nome: </label>
+            {{ form_hospital.nome|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_hospital.endereco.errors }}
+            <label> Endereço: </label>
+            {{ form_hospital.endereco|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_hospital.telefone.errors}}
+            <label> Telefone: </label>
+            {{ form_hospital.telefone|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_hospital.email.errors }}
+            <label> email: </label>
+            {{ form_hospital.email|addclass:'form-control' }}
+        </div>
 
 
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary mb-3" value="Salvar hospital">
-        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
-    </div>
-</form>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success mt-3" value="Salvar hospital">
+            <a href="{% url 'home' %}" class="btn btn-primary custom-btn mt-3 buttonVoltar"> Voltar</a>
+        </div>
+    </form>
+
+</div>
 
 {% endblock conteudo %}

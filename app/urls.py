@@ -8,11 +8,11 @@ from.views.hospital.hospital_views import *
 from.views.dispersao.dispersao_views import *
 from.views.doacao.doacao_views import *
 from.views.home.home_views import *
-
-
+from.views.tela_descanso_home.tela_descanso_home_views import *
 
 urlpatterns = [
-    path('',home, name='home'),
+    path('', tela_descanso_home, name='tela_descanso_home'),
+    path('home',home, name='home'),
     path('listar_agendamentos',listar_agendamentos,name='listar_agendamentos'),
     path('listar_doador',listar_doador,name='listar_doador'),
     path('listar_hospital',listar_hospital,name='listar_hospital'),

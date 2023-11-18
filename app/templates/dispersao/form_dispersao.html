@@ -6,41 +6,60 @@ Cadastro de usuários
 {% endblock titulo %}
 
 {% block conteudo %}
+<div class="container" id="topo" style=" max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
+    <h3 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px; font-weight: bold;">Solicitar Dispersão</h3>
+</div>
 
-<form method="POST" class="formulario">
-    {% csrf_token %}
+<div class="container" style=" max-width: 900px; font-family:Arial, Helvetica, sans-serif; 
+                                margin-top: 50px; border: 2px solid #414141; 
+                                padding: 10px; border-radius: 8px;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
 
-    <div class="form-group">
-        {{ form_dispersao.cod_func.errors }}
-        <label> Funcionário: </label>
-        {{form_dispersao.cod_func|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_dispersao.cod_hospital.errors }}
-        <label> Hospital: </label>
-        {{ form_dispersao.cod_hospital|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_dispersao.cod_tiposang.errors }}
-        <label> Tipo de sangue: </label>
-        {{ form_dispersao.cod_tiposang|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_dispersao.qtd_bolsa.errors}}
-        <label> Quantidade: </label>
-        {{ form_dispersao.qtd_bolsa|addclass:'form-control' }}
-    </div>
-    <div class="form-group">
-        {{ form_dispersao.data.errors }}
-        <label> Data de solicitação: </label>
-        {{ form_dispersao.data|addclass:'form-control' }}
-    </div>
+    <style>
+        .form-group {
+            padding: 5px;
+        
+        }
+        .buttonVoltar{
+            margin-left: 10px;
+        }
+    </style>
+
+    <form method="POST" class="formulario">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form_dispersao.cod_func.errors }}
+            <label> Funcionário: </label>
+            {{form_dispersao.cod_func|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_dispersao.cod_hospital.errors }}
+            <label> Hospital: </label>
+            {{ form_dispersao.cod_hospital|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_dispersao.cod_tiposang.errors }}
+            <label> Tipo de sangue: </label>
+            {{ form_dispersao.cod_tiposang|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_dispersao.qtd_bolsa.errors}}
+            <label> Quantidade: </label>
+            {{ form_dispersao.qtd_bolsa|addclass:'form-control' }}
+        </div>
+        <div class="form-group">
+            {{ form_dispersao.data.errors }}
+            <label> Data de solicitação: </label>
+            {{ form_dispersao.data|addclass:'form-control' }}
+        </div>
 
 
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary mb-3" value="Salvar solicitação ">
-        <a href="{{ request.META.HTTP_REFERER }}" class="btn-primary mb-3"> Voltar</a>
-    </div>
-</form>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success mt-3" value="Salvar solicitação ">
+            <a href="{% url 'home' %}" class="btn btn-primary custom-btn mt-3 buttonVoltar"> Voltar</a>
+        </div>
+    </form>
 
+</div>
 {% endblock conteudo %}

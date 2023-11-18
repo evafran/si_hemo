@@ -8,7 +8,8 @@ Lista de doadores
 
 <style>
     
-    #listar_doador_h1{
+    #listar_doador_h3{
+        font-weight: bold;
         border-bottom: 1.5px solid #817e7e; 
         margin-bottom:15px;
     }
@@ -23,8 +24,9 @@ Lista de doadores
     }
 
 </style>
+
 <div class="container" id="topo">
-    <h1 class="py-3" id="listar_doador_h1">Lista de Doadores </h1>
+    <h3 class="py-3" id="listar_doador_h3">Lista de Doadores </h3>
     <a href="{% url 'cadastrar_doador' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Doador"></a>
 </div>
 
@@ -55,7 +57,7 @@ Lista de doadores
 
 {% endfor %}
 
-<button type="button" class="btn btn-primary" onclick="topFunction()" style="border-radius: 100%;">Ir para o Início</button>
+<button type="button" class="btn btn-primary justify-content-end" onclick="topFunction()" style="border-radius: 8px; margin-bottom: 20px;">Ir para o Início</button>
 
 
 {% endblock conteudo %}

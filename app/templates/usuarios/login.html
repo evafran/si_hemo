@@ -1,4 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+
 {% load meus_filtros %}
 
 {% block titulo %}
@@ -6,9 +7,11 @@ Login
 {% endblock titulo %}
 
 {% block conteudo %}
-
-<div class="container" style=" max-width: 400px; font-family:Arial, Helvetica, sans-serif; 
-                              margin-top: 80px; border: 1px solid #414141; 
+<div class="container d-flex justify-content-center" id="topo" style=" max-width: 400px;margin-top: 80px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
+  <h3 class="py-3 " style=" font-weight: bold;">Login</h3>
+</div>
+<div class="container" style="max-width: 400px; font-family:Arial, Helvetica, sans-serif; 
+                              margin-top: 5px; border: 1px solid #414141; 
                               padding: 10px; border-radius: 8px;
                               box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
   
@@ -40,11 +43,12 @@ Login
       {{ form_login.password|addclass:'form-control' }}
     </div>
   
-    <div class="form-group">
+    <div class="form-group d-flex justify-content-center ">
       <input type="submit" value="Logar" class="btn btn-success mt-3">
     </div>
   </form>
 
 </div>
+
 
 {% endblock conteudo %}

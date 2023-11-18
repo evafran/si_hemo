@@ -8,11 +8,11 @@ Cadastro de tipo sanguíneo
 {% block conteudo %}
 
 <div class="container" id="topo" style=" max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
-    <h1 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px;">Inserir Tipo Sanguineo</h1>
+    <h3 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px; font-weight: bold;">Inserir Tipo Sanguíneo</h3>
 </div>
 
 <div class="container" style=" max-width: 900px; font-family:Arial, Helvetica, sans-serif; 
-                                margin-top: 20px; border: 2px solid #414141; 
+                                margin-top: 50px; border: 2px solid #414141; 
                                 padding: 10px; border-radius: 8px;
                                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
 
@@ -25,12 +25,13 @@ Cadastro de tipo sanguíneo
             margin-left: 10px;
         }
     </style>
+    
     <form method="POST" class="formulario">
         {% csrf_token %}
     
         <div class="form-group">
             {{ form_tiposangue.tipo.errors }}
-            <label> tipo: </label>
+            <label> Tipo: </label>
             {{form_tiposangue.tipo|addclass:'form-control' }}
         </div>
         <div class="form-group">
@@ -41,7 +42,7 @@ Cadastro de tipo sanguíneo
     
     
         <div class="form-group">
-            <input type="submit" class="btn btn-success mt-3" value="Salvar tipo de sangue ">
+            <input type="submit" class="btn btn-success mt-3" value="Salvar Tipo Sanguíneo">
             <a href="{% url 'home'%}" class="btn btn-primary custom-btn mt-3 buttonVoltar"> Voltar</a>
         </div>
     </form>

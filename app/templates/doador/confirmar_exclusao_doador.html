@@ -7,22 +7,22 @@ Confirmar exclusão
 
 {% block conteudo %}
 
-<div class="py-3">
+<div class=" container" style="max-width: 800px; margin-top: 50px; font-family:Arial, Helvetica, sans-serif; ">
   <div class="card mb-3">
-    <div class="card-header">
-      <h3>Tem certeza que deseja excluir o doador abaixo?</h3>
+    <div class="card-header bg-light" style="display: flex; justify-content: center; align-items: center;">
+      <h3 style="font-weight: bold;">Tem certeza que deseja excluir o doador abaixo?</h3>
     </div>
     <div class="card-body">
-      <h5 class="card-title"> {{ doador.nome }} </h5>
-      <p class="card-text"> {{ doador.endereco }} </p>
-      <p class="card-text"> {{ doador.telefone }} </p>
-      <p class="card-text"> {{ doador.cpf }} </p>
+      <h3 class="card-title">Nome: {{ doador.nome }} </h3>
+      <h6 class="card-text">Cpf: {{ doador.cpf }} </h6>
+      <h6 class="card-text">Endereço: {{ doador.endereco }} </h6>
+      <h6 class="card-text">Telefone: {{ doador.telefone }} </h6>
       <hr>
       <form method="POST">
         {% csrf_token %}
         <button class="btn btn-danger" type="submit">Excluir</button>
         <!-- o META.HTTP.REFERER pega a ultima rota que o usuário estava -->
-        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Voltar</a>
+        <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary" style="margin-left: 20px;">Voltar</a>
       </form>
     </div>
   </div>

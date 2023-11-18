@@ -7,24 +7,29 @@ Lista de lembretes
 
 {% block conteudo %}
 
-    <div class="d-flex justify-content-end">
-        <a href="{% url 'home' %}" class="ml-auto">
-            <button type="button" class="btn-primary mb-3">Voltar a Home </button>
-        </a>
-    </div>
+
+<div class="container" id="topo" style=" max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
+    <h3 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px; font-weight: bold;">Listar Agendamento</h3>
+</div>
+
+
 
 {% for i in agendamentos %}
 
-    <div class="card mb-3"> 
-        <div class="card-body">
-            <h4 class="card-title"> Doador: {{ i.cod_doador }} </h4>
+<div class="container card mb-3" style=" max-width: 900px; font-family:Arial, Helvetica, sans-serif; 
+                                margin-top: 50px; border: 2px solid #414141; 
+                                padding: 10px; border-radius: 8px;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
+    
+    <div class="card-body" style="padding: 20px;"> 
+            <h3 class="card-title"> Doador: {{ i.cod_doador }} </h3>
             <h6 class="card-subtitle"> Data e Hora: {{ i.data_hora }} </h6>
             <hr>
-            <a href="{% url 'editar_agendamento' i.id %}">Editar</a>
-            <a href="{% url 'excluir_agendamento' i.id %}">Excluir</a>
-        </div>
+            <a href="{% url 'editar_agendamento' i.id %}"><button type="button" class="btn btn-primary custom-btn">Editar</button></a>
+            <a href="{% url 'excluir_agendamento' i.id %}"><button type="button" class="btn btn-danger custom-btn">Excluir</button></a>
     </div>
 
+</div>
 {% endfor %}
 
 {% endblock conteudo %}

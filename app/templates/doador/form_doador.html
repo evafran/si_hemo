@@ -7,8 +7,11 @@ Cadastro de usuários
 
 {% block conteudo %}
 
+<div class="container" id="topo" style=" max-width: 900px; padding: 0; font-family:Arial, Helvetica, sans-serif; ">
+    <h3 class="py-3 " style="border-bottom: 1.5px solid #817e7e; margin-bottom:15px;">Cadastrar Novo </h3>
+</div>
 
-<div class="container" style=" max-width: 800px; font-family:Arial, Helvetica, sans-serif; 
+<div class="container" style=" max-width: 900px; font-family:Arial, Helvetica, sans-serif; 
                                margin-top: 50px; border: 2px solid #414141; 
                                padding: 10px; border-radius: 8px;
                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); ">
@@ -21,7 +24,7 @@ Cadastro de usuários
             margin-left: 10px;
         }
     </style>
-    <h3>cadastrar Novo Doador</h3>
+
     <form method="POST" class="formulario" >
         {% csrf_token %}
     

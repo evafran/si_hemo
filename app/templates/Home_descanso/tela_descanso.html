@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load meus_filtros %}
+
+{% block titulo %}
+    Home 
+{% endblock titulo %}
+
+{% block teladescanso %}
+
+    <div class="container" style="padding: 0; margin-left: 50px;">
+        <img src="{% static 'imagens/gif_doacoes.gif' %}" alt="Logo" width="auto" height="auto">
+        <a href="{% url 'logar_usuario' %}" id="loginLink">Login</a>
+    </div>
+
+{% endblock teladescanso %}
