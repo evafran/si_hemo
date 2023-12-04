@@ -1,4 +1,4 @@
-{% extends 'base.html' %}  <!--herança de template-->
+{% extends 'base.html' %}
 
 {% block titulo %}
 Lista de Tipo de Sangue
@@ -6,23 +6,75 @@ Lista de Tipo de Sangue
 
 {% block conteudo %}
 
-<h1 class="py-3">Lista de Tipo de Sangue</h1>
+<style>
+    .card-body {
+        display: flex;
+        align-items: center;
+    }
 
-    {% for i in tiposangue %}
+    .info {
+        flex-grow: 1;
+    }
 
-        <div class="card mb-3">
-            
-            <div class="card-body">
-                <h4 class="card-title"> Tipo:{{ i.tipo }} </h4>
-                <h4 class="card-title"> Quantidade:{{ i.quantidade }} </h4>
+    .bolsa-sangue {
+        width: 30px;
+        height: 60px;
+        border: 2px solid black;
+        margin-left: 20px;
+        position: relative;
+        border-radius: 5px; /* Arredondar as bordas */
+        background-color: white; /* Fundo branco */
+        overflow: hidden;
+    }
+
+    .sangue {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: red; /* Cor do sangue */
+    }
+
+    .cheia { height: 100%; }
+    .metade { height: 50%; }
+    .vazia { height: 0%; }
+
+    .estado-critico {
+        font-size: 20px; /* Tamanho do texto ou ícone */
+        color: black; /* Cor do texto ou ícone */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<h4 class="py-3">Tipos Sanguíneos</h4>
+
+{% for i in tiposangue %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="info">
+                <h5 class="card-title"> Tipo: {{ i.tipo }} </h5>
+                <h5 class="card-title"> Quantidade: {{ i.quantidade }} </h5>
                 <hr>
-                <a href="{% url 'editar_tiposangue' i.id %}">Editar</a>
-                <a href="{% url 'excluir_tiposangue' i.id%}">Excluir</a>
+            <a href="{% url 'editar_tiposangue' i.id %}">Editar</a>
+            <a href="{% url 'excluir_tiposangue' i.id %}">Excluir</a>
+            </div>
+
+            <!-- Representação da Bolsa de Sangue -->
+            <div class="bolsa-sangue">
+                <div class="{% if i.quantidade > 300 %}sangue cheia{% elif i.quantidade >= 150 %}sangue metade{% else %}sangue vazia{% endif %}"></div>
+                {% if i.quantidade < 150 %}
+                    <span class="estado-critico">&#9888;</span> <!-- Símbolo de aviso -->
+                {% endif %}
             </div>
         </div>
+        
+    </div>
+{% endfor %}
 
-    {% endfor %}
-
-<a href="{% url 'cadastrar_tiposangue' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Tipo Sangue"></a>
+<a href="{% url 'cadastrar_tiposangue' %}">
+    <input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Tipo Sangue">
+</a>
 
 {% endblock conteudo %}

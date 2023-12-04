@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-jb66!60o81b(8#l02=z$%)7-bqbe8@f=5xpmt$jrjt+3xdx^-6
 DEBUG = True
 
 ALLOWED_HOSTS = []
-SECURE_SSL_REDIRECT=False
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_SSL_REDIRECT = False
+SSLSERVER_REDIRECT_HTTPS = True
+
 
 # Application definition
 
@@ -42,6 +46,11 @@ INSTALLED_APPS = [
     'sslserver',
 ]
 
+
+
+# Defina a URL para a qual deseja redirecionar.
+#HTTP_REDIRECT_URL = 'http://127.0.0.1:8000'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+
 ]
 
 ROOT_URLCONF = 'gerenciador_lembretes.urls'
@@ -65,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app.context_processors.funcionario_context'
             ],
         },
     },

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <!--arquivo html base, que será herdado pelo outros-->
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>
-        {% block titulo %}
+        {% block titulo %} 
         {% endblock titulo %}
     </title>
     <!--Favicon-->
@@ -47,8 +47,12 @@
         color: white;
         font-family:Arial, Helvetica, sans-serif;
         border-left: 1px solid #ffffff;
-        
-
+      }  
+      #user-icon {
+        height: 19px; /* Diminua a altura para diminuir o tamanho */
+        width: 19px; /* Diminua a largura para manter a proporção */
+        vertical-align: middle;
+        margin-right: 5px; /* espaço entre o ícone e o texto */
       }
     </style>
     <div class="container d-flex justify-content-between align-items-center" >
@@ -62,7 +66,7 @@
                 {% comment %}
                 <a class="nav-link" href="{% url 'listar_lembretes' %}">Listar Lembretes</a>
                 {% endcomment %}
-                
+                <img src="{% static 'imagens/user.png' %}" alt="Ícone de usuário" id="user-icon">
                 <p class="ml-2 mb-0" id="nomedousuario"> {{ request.user.username }}</p>
                 <a class="button_cadastrar_usuario_logout" href="{% url 'deslogar_usuario' %}">Logout</a>
                 
@@ -72,7 +76,7 @@
  
             {% endif %}
         </div>
-      {%endif%}
+      {%endif%} 
     </div>
   </div>
     
@@ -149,33 +153,33 @@
 
               
               <li class="nav-item">
-                <a class="nav-link text-uppercase" href="{% url 'listar_doador' %}"><span>Lista de Doadores</span></a>
+                <a class="nav-link text-uppercase" href="{% url 'listar_doador' %}"><span>Doadores</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-uppercase" href="{% url 'cadastrar_tiposangue' %}"><span>Inserir Tipo Sanguineo</span></a>
+                <a class="nav-link text-uppercase" href="{% url 'listar_tiposangue' %}"><span>Estoque de Sangue</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-uppercase" href="{% url 'cadastrar_hospital' %}"><span>Cadastrar Hospital</span></a>
+                <a class="nav-link text-uppercase" href="{% url 'listar_hospital' %}"><span>Hospitais</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-uppercase" href="{% url 'solicitar_dispersao' %}"><span>Solicitar Dispersão</span></a>
+                <a class="nav-link text-uppercase" href="{% url 'listar_dispersao' %}"><span>Listar Disperções</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-uppercase" href="{% url 'inserir_doacao' %}"><span>Nova Doação</span></a>
+                <a class="nav-link text-uppercase" href="{% url 'listar_doacao' %}"><span>Visualizar Doação</span></a>
               </li>
-              {% for f in funcionario %}
-                {% if f.nome == request.user.first_name %}
+              {% for f in funcionario_validacao %}
+                 {% if f.nome == request.user.first_name %}
                   {% if f.prioridade == 'S' %}
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="{% url 'listar_funcionario' %}"><span>Listar  Funcionário</span></a>
+                      <a class="nav-link text-uppercase" href="{% url 'listar_funcionario' %}"><span></span>Funcionários </span></a>
                     </li>
-                  {% endif %}
+                  {% endif %} 
                 {% endif %}
               {% endfor %}
             </ul>
           </div>
         
-      {%endif%}
+      {% endif %}
     </header>
     
 <main class="container">

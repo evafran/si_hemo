@@ -1,4 +1,4 @@
-{% extends 'base.html' %}  <!--herança de template-->
+{% extends 'base.html' %} <!-- herança de template -->
 
 {% block titulo %}
 Lista de hospital
@@ -6,25 +6,26 @@ Lista de hospital
 
 {% block conteudo %}
 
-<h1 class="py-3">Lista de hospital</h1>
+<h4 class="py-3"> Hospitais </h4>
 
-    {% for i in hospital %}
+{% for i in hospital %}
 
-        <div class="card mb-3">
-            
-            <div class="card-body">
-                <h4 class="card-title"> Cnpj:{{ i.cnpj }} </h4>
-                <h4 class="card-title"> Nome:{{ i.nome }} </h4>
-                <h6 class="card-subtitle"> Endereço: {{ i.endereco}} </h6>
-                <p class="card-text"> Telefone: {{ i.telefone }} </p>
-                <p class="card-text"> Email: {{ i.email }} </p>
-                <hr>
-                <a href="{% url 'editar_hospital' i.id %}">Editar</a>
-                <a href="{% url 'excluir_hospital' i.id%}">Excluir</a>
-            </div>
-        </div>
+<div class="card mb-3">
 
-    {% endfor %}
+    <div class="card-body">
+
+        <h5 class="card-title"> Nome: {{ i.nome }} </h5>
+        <h6 class="card-text"> Cnpj: {{ i.cnpj }} </h6>
+        <h6 class="card-text"> Endereço: {{ i.endereco}} </h6>
+        <h6 class="card-text"> Telefone: {{ i.telefone }} </h6>
+        <h6 class="card-text"> Email: {{ i.email }} </h6>
+        <hr>
+        <a href="{% url 'editar_hospital' i.id %}">Editar</a>
+        <a href="{% url 'excluir_hospital' i.id%}">Excluir</a>
+    </div>
+</div>
+
+{% endfor %}
 
 <a href="{% url 'cadastrar_hospital' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo hospital"></a>
 

@@ -9,8 +9,13 @@
 {% endblock titulo %}
 
 {% block teladescanso %}
+{% comment %}<script>
+    if(location.protocol !== 'http:'){
+        const httpURL = 'http://' + location.href.split('//')[1];
+        location.replace(httpURL);
+    }
+</script> {% endcomment %}
 
-    
 <div class="form-group">
     <a href="{% url 'politica_seguranca' %}" class="btn-primary mb-3">Política de Segurança</a>
 </div>
@@ -37,7 +42,7 @@
         <li>Credibidade </li>
 
         <p>
-            Gestor responsável: Assessoria da Qualidade
+            Gestor responsável: Assessoria da Qualidade 
 
         </p>
 

@@ -6,7 +6,7 @@ Lista de doadores
 
 {% block conteudo %}
 
-<h1 class="py-3">Lista de Doadores </h1>
+<h4 class="py-3">Doadores </h4>
 <a href="{% url 'cadastrar_doador' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Doador"></a>
 
 
@@ -15,13 +15,13 @@ Lista de doadores
 <div class="card mb-3">
     
     <div class="card-body">
-        <h4 class="card-title"> Tipo : {{ i.nome }} </h4>
-        <h6 class="card-subtitle"> Endereço: {{ i.endereco }} </h6>
-        <p class="card-text"> CPF:: {{ i.cpf }} </p>
-        <p class="card-text"> Telefone: {{ i.telefone }} </p>
-        <p class="card-text"> Data de Nascimento: {{ i.data_nascimento }} </p>
-        <p class="card-text"> Peso: {{ i.peso }} </p>
-        <p class="card-text"> Código  Sanguíneo: {{ i.cod_tiposang }} </p>
+        <h5 class="card-title"> Nome: {{ i.nome }} </h5>
+        <h6 class="card-text"> Endereço: {{ i.endereco }} </h6>
+        <h6 class="card-text"> CPF: {{ i.cpf }} </h6>
+        <h6 class="card-text"> Telefone: {{ i.telefone }} </h6>
+        <h6 class="card-text"> Data de Nascimento: {{ i.data_nascimento }} </h6>
+        <h6 class="card-text"> Peso: {{ i.peso }} </h6>
+        <h6 class="card-text"> Código Sanguíneo: {{ i.cod_tiposang }} </h6>
         <hr>
         <a href="{% url 'editar_doador' i.id %}">Editar</a>
         <a href="{% url 'excluir_doador' i.id %}">Excluir</a>

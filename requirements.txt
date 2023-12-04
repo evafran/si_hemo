@@ -3,3 +3,4 @@ backports.zoneinfo==0.2.1
 Django==4.1.10
 sqlparse==0.4.4
 typing-extensions==4.8.0
+django-sslserver==0.22

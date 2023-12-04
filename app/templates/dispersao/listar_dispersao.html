@@ -6,18 +6,18 @@ Lista de Dispersão
 
 {% block conteudo %}
 
-<h1 class="py-3">Lista de Dispersão</h1>
+<h4 class="py-3">Lista de Dispersão</h4>
 
     {% for i in dispersao %}
 
         <div class="card mb-3">
             
             <div class="card-body">
-                <h4 class="card-title"> Nome Funcionário:{{ i.cod_func }} </h4>
-                <h4 class="card-title"> Nome Hospital:{{ i.cod_hospital}} </h4>
-                <h4 class="card-title"> Tipo Sangue:{{ i.cod_tiposang }} </h4>
-                <h4 class="card-title"> Quntidade de Bolsa:{{ i.qtd_bolsa }} </h4>
-                <h4 class="card-title"> Data da dispersão:{{ i.data }} </h4>
+                <h5 class="card-title"> Nome Funcionário:{{ i.cod_func }} </h5>
+                <h6 class="card-text"> Nome Hospital:{{ i.cod_hospital}} </h6>
+                <h6 class="card-text"> Tipo Sangue:{{ i.cod_tiposang }} </h6>
+                <h6 class="card-text"> Quntidade de Bolsa:{{ i.qtd_bolsa }} </h6>
+                <h6 class="card-text"> Data da dispersão:{{ i.data }} </h6>
                 <hr>
                 <a href="{% url 'editar_dispersao' i.id %}">Editar</a>
                 <a href="{% url 'excluir_dispersao' i.id%}">Excluir</a>

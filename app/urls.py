@@ -10,7 +10,6 @@ from.views.doacao.doacao_views import *
 from.views.funcionario.funcionario_views import *
 from.views.home.home_views import *
 from.views.politica_seguranca.politica_seguranca_views import *
-from.views.base.base_views import *
 
 
 
@@ -42,7 +41,6 @@ urlpatterns = [
     path('editar_doador/<int:id>', editar_doador, name='editar_doador'),
     path('excluir_doador/<int:id>', excluir_doador, name='excluir_doador'),
     path('listar_funcionario/', listar_funcionario, name='listar_funcionario'),
-    path('listar_funcionario/', listar_funcionario_base, name='listar_funcionario_base'),
     path('editar_funcionario/<int:id>', editar_funcionario, name='editar_funcionario'),
     path('excluir_funcionario/<int:id>', excluir_funcionario, name='excluir_funcionario'),
     path('cadastrar_funcionario/', cadastrar_funcionario, name='cadastrar_funcionario'),

@@ -6,16 +6,16 @@ Lista de Doações
 
 {% block conteudo %}
 
-<h1 class="py-3">Lista de Doações</h1>
+<h4 class="py-3"> Doações</h4>
 
     {% for i in doacao %}
 
         <div class="card mb-3">
             
             <div class="card-body">
-                <h4 class="card-title"> Agendamento:{{ i.cod_agen }} </h4>
-                <h4 class="card-title"> Nome Funcionário:{{ i.cod_func }} </h4>
-                <h6 class="card-subtitle"> Data da Doação: {{ i.data_hora}} </h6>
+                <h5 class="card-title"> Agendamento: {{ i.cod_agen }} </h5>
+                <h6 class="card-text"> Nome Funcionário: {{ i.cod_func }} </h6>
+                <h6 class="card-text"> Data da Doação: {{ i.data_hora}} </h6>
                 
                 <hr>
                 <a href="{% url 'editar_doacao' i.id %}">Editar</a>

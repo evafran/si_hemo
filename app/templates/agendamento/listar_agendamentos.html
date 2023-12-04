@@ -18,14 +18,14 @@
                 
             }
         </style>
-        <h1 style="color: black;">Agendamentos</h1>
+        <h4 style="color: black;">Agendamentos</h4>
         {% for i in agendamentos %}
             <div class="card mb-3">
                 
                 
                 <div class="card-body">
-                    <h4 class="card-title"> Doador: {{ i.cod_doador }} </h4>
-                    <h6 class="card-subtitle"> Data e Hora: {{ i.data_hora }} </h6>
+                    <h5 class="card-title"> Doador: {{ i.cod_doador }} </h5>
+                    <h6 class="card-text"> Data e Hora: {{ i.data_hora }} </h6>
                     <hr>
                     <a href="{% url 'editar_agendamento' i.id %}">Editar</a>
                     <a href="{% url 'excluir_agendamento' i.id %}">Excluir</a>

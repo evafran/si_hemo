@@ -6,7 +6,7 @@ Lista de funcionario
 
 {% block conteudo %}
 
-<h1 class="py-3">Lista de Funcionários </h1>
+<h4 class="py-3"> Funcionários </h4>
 <a href="{% url 'cadastrar_funcionario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar novo Funcionário"></a>
 
 
@@ -15,11 +15,11 @@ Lista de funcionario
 <div class="card mb-3">
     
     <div class="card-body">
-        <h4 class="card-title"> Nome : {{ i.nome }} </h4>
-        <p class="card-text"> CPF:: {{ i.cpf }} </p>
-        <h6 class="card-subtitle"> Endereço: {{ i.endereco }} </h6>
-        <p class="card-text"> Telefone: {{ i.telefone }} </p>
-        <p class="card-text"> Usuario: {{ i.usuario }} </p>
+        <h5 class="card-title"> Nome : {{ i.nome }} </h5>
+        <h6 class="card-text"> CPF:: {{ i.cpf }} </h6>
+        <h6 class="card-text"> Endereço: {{ i.endereco }} </h6>
+        <h6 class="card-text"> Telefone: {{ i.telefone }} </h6>
+        <h6 class="card-text"> Usuario: {{ i.usuario }} </h6>
         <hr>
         <a href="{% url 'editar_funcionario' i.id %}">Editar</a>
         <a href="{% url 'excluir_funcionario' i.id %}">Excluir</a>
