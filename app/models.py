@@ -70,3 +70,22 @@ class Doacao(models.Model):
     cod_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE,null=False,blank=False)
     data_hora = models.DateTimeField(null=False,blank=False)
 
+
+class vw_historicoDoacao(models.Model):
+    nome = models.CharField(max_length=255, primary_key = True)
+    tipo = models.CharField(max_length=50)
+    data_hora = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'vw_historicoDoacao'
+
+
+class vw_agendaFuturo(models.Model):
+    nome = models.CharField(max_length=255, primary_key = True) 
+    tipo = models.CharField(max_length = 50) 
+    data_hora = models.DateTimeField()
+
+    class Meta:
+        managed= False
+        db_table = 'vw_agendaFuturo'

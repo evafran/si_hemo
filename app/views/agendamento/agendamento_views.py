@@ -3,12 +3,14 @@ from django.shortcuts import render,redirect
 from ...entidades.agendamento import Agendamento
 from ...services import agendamento_service
 from ...forms import AgendamentoForm
+from ...models import vw_agendaFuturo
 
 @login_required()
 
 def listar_agendamentos(request):
     agendamentos = agendamento_service.listar_agendamentos(request.user)
-    return render(request,'agendamento/listar_agendamentos.html',{'agendamentos':agendamentos})
+    agenda_futuro = vw_agendaFuturo.objects.all()
+    return render(request,'agendamento/listar_agendamentos.html',{'agendamentos':agendamentos, 'agenda_futuro':agenda_futuro})
 
 @login_required
 def cadastrar_agendamento(request):

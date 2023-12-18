@@ -45,5 +45,6 @@ urlpatterns = [
     path('excluir_funcionario/<int:id>', excluir_funcionario, name='excluir_funcionario'),
     path('cadastrar_funcionario/', cadastrar_funcionario, name='cadastrar_funcionario'),
     path('logar_usuario/', logar_usuario, name='logar_usuario'),
-    path('deslogar_usuario/', deslogar_usuario, name='deslogar_usuario')
+    path('deslogar_usuario/', deslogar_usuario, name='deslogar_usuario'),
+    path('historico/', historico, name='historico'),
 ]

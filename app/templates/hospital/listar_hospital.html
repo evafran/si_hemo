@@ -1,5 +1,5 @@
 {% extends 'base.html' %} <!-- herança de template -->
-
+{% load meus_filtros %}
 {% block titulo %}
 Lista de hospital
 {% endblock titulo %}
@@ -13,12 +13,16 @@ Lista de hospital
 <div class="card mb-3">
 
     <div class="card-body">
-
+        <div style="float: left; margin-right: 10px;">
+            <i class="fas fa-clinic-medical" style="color: red; font-size: 48px;"></i>
+        </div>
         <h5 class="card-title"> Nome: {{ i.nome }} </h5>
         <h6 class="card-text"> Cnpj: {{ i.cnpj }} </h6>
         <h6 class="card-text"> Endereço: {{ i.endereco}} </h6>
         <h6 class="card-text"> Telefone: {{ i.telefone }} </h6>
         <h6 class="card-text"> Email: {{ i.email }} </h6>
+
+        <h6 class="card-text"> Total de Dispersões: {{ total_dispersoes|get_item:i.id }} </h6>
         <hr>
         <a href="{% url 'editar_hospital' i.id %}">Editar</a>
         <a href="{% url 'excluir_hospital' i.id%}">Excluir</a>

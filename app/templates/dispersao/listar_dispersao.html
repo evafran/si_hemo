@@ -1,5 +1,5 @@
 {% extends 'base.html' %}  <!--herança de template-->
-
+{% load static %}
 {% block titulo %}
 Lista de Dispersão
 {% endblock titulo %}
@@ -13,11 +13,14 @@ Lista de Dispersão
         <div class="card mb-3">
             
             <div class="card-body">
-                <h5 class="card-title"> Nome Funcionário:{{ i.cod_func }} </h5>
-                <h6 class="card-text"> Nome Hospital:{{ i.cod_hospital}} </h6>
-                <h6 class="card-text"> Tipo Sangue:{{ i.cod_tiposang }} </h6>
-                <h6 class="card-text"> Quntidade de Bolsa:{{ i.qtd_bolsa }} </h6>
-                <h6 class="card-text"> Data da dispersão:{{ i.data }} </h6>
+                <div style="float: left; margin-right: 10px;">
+                    <img src="{% static 'imagens/bolsa_sangue.png' %}" alt="logo dispersao" style=" width: 75px; height: auto;">
+                </div>
+                <h5 class="card-title"> Nome Funcionário: {{ i.cod_func }} </h5>
+                <h6 class="card-text"> Nome Hospital: {{ i.cod_hospital}} </h6>
+                <h6 class="card-text"> Tipo Sangue: {{ i.cod_tiposang }} </h6>
+                <h6 class="card-text"> Quantidade de Bolsa: {{ i.qtd_bolsa }} </h6>
+                <h6 class="card-text"> Data da dispersão: {{ i.data }} </h6>
                 <hr>
                 <a href="{% url 'editar_dispersao' i.id %}">Editar</a>
                 <a href="{% url 'excluir_dispersao' i.id%}">Excluir</a>

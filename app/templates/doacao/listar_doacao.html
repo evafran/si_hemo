@@ -1,5 +1,5 @@
 {% extends 'base.html' %}  <!--herança de template-->
-
+{% load static %}
 {% block titulo %}
 Lista de Doações
 {% endblock titulo %}
@@ -8,11 +8,19 @@ Lista de Doações
 
 <h4 class="py-3"> Doações</h4>
 
+<form action="{% url 'historico' %}" method="get">
+    <input type="text" name="nome" placeholder="Digite o nome do doador" required>
+    <input type="submit" value="Pesquisar">
+</form>
+
     {% for i in doacao %}
 
         <div class="card mb-3">
             
             <div class="card-body">
+                <div style="float: left; margin-right: 10px;">
+                    <img src="{% static 'imagens/maozinha.png' %}" alt="logo doacoes" style=" width: 75px; height: auto;">
+                </div>
                 <h5 class="card-title"> Agendamento: {{ i.cod_agen }} </h5>
                 <h6 class="card-text"> Nome Funcionário: {{ i.cod_func }} </h6>
                 <h6 class="card-text"> Data da Doação: {{ i.data_hora}} </h6>

@@ -3,6 +3,7 @@ from ...forms import HospitalForm
 from ...entidades.hospital import Hospital
 from ...services import hospital_service
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 @login_required()
 
@@ -32,7 +33,16 @@ def cadastrar_hospital(request):
 @login_required()
 def listar_hospital(request):
     hospital = hospital_service.listar_hospital(request.user)
-    return render(request, 'hospital/listar_hospital.html', {'hospital': hospital})
+    total_dispersoes = {}
+    with connection.cursor() as cursor:
+        for hos in hospital:
+            cursor.execute("CALL TotalDispersaoPorHospital(%s)", [hos.id])
+            resultado = cursor.fetchone()
+            if resultado:
+                total_dispersoes[hos.id] = resultado[1]
+            else:
+                total_dispersoes[hos.id] = 0
+    return render(request, 'hospital/listar_hospital.html', {'hospital': hospital,'total_dispersoes': total_dispersoes})
 
 @login_required()
 def editar_hospital(request,id):

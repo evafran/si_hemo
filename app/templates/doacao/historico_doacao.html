@@ -1,0 +1,34 @@
+{% extends 'base.html' %}  <!--herança de template-->
+
+{% block titulo %}
+Histórico do Doador
+{% endblock titulo %}
+
+{% block conteudo %}
+
+<h4 class="py-3"> Doações {{ resultados.nome }}</h4>
+
+<form action="{% url 'historico' %}" method="get">
+    <input type="text" name="nome" placeholder="Digite o nome do doador" required>
+    <input type="submit" value="Pesquisar">
+</form>
+
+    {% for i in resultados %}
+
+        <div class="card mb-3">
+            
+            <div class="card-body">
+                <h6 class="card-text"> Data: {{ i.data_hora }} </h6>
+                <h6 class="card-text"> Tipo Sanguíneo: {{ i.tipo}} </h6>
+            </div>
+        </div>
+
+    {% endfor %}
+<div class="form-group">
+    <a href="{% url 'inserir_doacao' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar nova Doação"></a>
+</div>
+
+<div class="form-group">
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Voltar</a>
+</div>
+{% endblock conteudo %}

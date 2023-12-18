@@ -29,6 +29,12 @@ Cadastro de usuários
         {{ form_dispersao.qtd_bolsa.errors}}
         <label> Quantidade: </label>
         {{ form_dispersao.qtd_bolsa|addclass:'form-control' }}
+        {% if messages %}
+            {% for m in messages %}
+                <div class="alert alert-{{ m.tags }}">{{ m }}</div>
+            {% endfor %}
+        {% endif %}
+
     </div>
     <div class="form-group">
         {{ form_dispersao.data.errors }}

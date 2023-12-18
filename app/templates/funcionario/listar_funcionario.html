@@ -1,4 +1,5 @@
 {% extends 'base.html' %}  <!--herança de template-->
+{% load static %}
 
 {% block titulo %}
 Lista de funcionario
@@ -15,6 +16,9 @@ Lista de funcionario
 <div class="card mb-3">
     
     <div class="card-body">
+        <div style="float: left; margin-right: 10px;">
+            <img src="{% static 'imagens/nurse.png' %}" alt="logo funcionario" style=" width: 75px; height: auto;">
+        </div>
         <h5 class="card-title"> Nome : {{ i.nome }} </h5>
         <h6 class="card-text"> CPF:: {{ i.cpf }} </h6>
         <h6 class="card-text"> Endereço: {{ i.endereco }} </h6>

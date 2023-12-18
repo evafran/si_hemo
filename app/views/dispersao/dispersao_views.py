@@ -3,6 +3,8 @@ from ...forms import DispersaoForm
 from ...entidades.dispersao import Dispersao
 from ...services import dispersao_service
 from django.contrib.auth.decorators import login_required
+from django.db import connection
+from django.contrib import messages
 
 @login_required()
 
@@ -17,15 +19,26 @@ def solicitar_dispersao(request):
             cod_tiposang = form_dispersao.cleaned_data['cod_tiposang']
             qtd_bolsa = form_dispersao.cleaned_data['qtd_bolsa']
             data = form_dispersao.cleaned_data['data']
-            nova_dispersao = Dispersao(cod_func=cod_func, cod_hospital=cod_hospital, cod_tiposang=cod_tiposang,qtd_bolsa=qtd_bolsa,data=data)
-            # envia o objeto com os dados para o hospital_service, que insere no BD
-            dispersao_service.solicitar_dispersao(nova_dispersao)
-            return redirect('listar_agendamentos')
+            sucesso = atualizar_estoque(cod_tiposang.id, -qtd_bolsa)
+            if sucesso: 
+                nova_dispersao = Dispersao(cod_func=cod_func, cod_hospital=cod_hospital, cod_tiposang=cod_tiposang,qtd_bolsa=qtd_bolsa,data=data)
+                # envia o objeto com os dados para o hospital_service, que insere no BD
+                dispersao_service.solicitar_dispersao(nova_dispersao)
+                return redirect('listar_agendamentos')
+            else:
+                messages.error(request,'Não é possível realizar a dispersão, insira uma quantidade válida!')
+                return render(request,'dispersao/form_dispersao.html',{'form_dispersao': form_dispersao})
     else:
         # cria uma instância vazia do formulário caso o método não seja POST
         form_dispersao = DispersaoForm()
     return render(request, 'dispersao/form_dispersao.html', {'form_dispersao': form_dispersao})
 
+def atualizar_estoque(id_tipo_sangue, quantidade_modificada):
+    with connection.cursor() as cursor:
+        cursor.execute("CALL AtualizarEstoque(%s, %s, @sucesso)", [id_tipo_sangue, quantidade_modificada])
+        cursor.execute("SELECT @sucesso")
+        sucesso = cursor.fetchone()[0]
+        return sucesso
 
 # com login_required exibe o método apenas se o usuário estiver logado, se não, redireciona para página de login
 @login_required()
